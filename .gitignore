@@ -1,0 +1,51 @@
+# ==== Perilla Mechanical PDF Editor - .gitignore ====
+
+# 构建输出目录（每次编译重新生成，不应提交）
+bin/
+bin_e2e/
+bin_test/
+obj/
+out/
+
+# 运行时临时文件
+*.pdb
+*.mdb
+*.log
+
+# 依赖包目录（NuGet packages，运行时依赖已提取到 lib/）
+packages/
+
+# NuGet 本地工具缓存
+.tools/
+
+# 临时 & 调试辅助文件（开发过程中生成，非项目必需）
+PDFSharp.dll
+Perilla.rsp
+compile_test.*
+
+# PowerShell 调试脚本（临时调试产物，可删除）
+build.ps1
+build_e2e.ps1
+build_test.ps1
+check*.ps1
+inspect*.ps1
+install_*.ps1
+restore_packages.ps1
+download_nuget.ps1
+test_build*.ps1
+test_compile*.ps1
+
+# OS 生成文件
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# ==== 保留的最小构建依赖（应提交） ====
+# lib/roslyn/                      - Roslyn C# 7.3 编译器（约 22 MB，完整工具集）
+# lib/managed/PdfiumViewer.dll      - PDF 渲染托管封装（约 0.1 MB）
+# lib/managed/EPPlus.dll            - Excel 导出（约 3.1 MB）
+# lib/native/pdfium.dll             - PDFium 原生引擎 x64（约 13.5 MB）
+
+# ==== 发行打包体积（zip） ====
+# 主程序运行只需: bin/Perilla.Mechanical.App.exe + PdfiumViewer.dll + EPPlus.dll + pdfium.dll
+# 合计约: 20 MB
